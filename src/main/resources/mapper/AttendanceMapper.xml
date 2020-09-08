@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.software.mapper.AttendanceMapper">
+  <resultMap id="BaseResultMap" type="com.example.software.domain.entity.Attendance">
+    <!--@mbg.generated-->
+    <!--@Table attendance-->
+    <id column="atteno" jdbcType="INTEGER" property="atteno" />
+    <result column="empno" jdbcType="INTEGER" property="empno" />
+    <result column="ename" jdbcType="VARCHAR" property="ename" />
+    <result column="dateRecord" jdbcType="DATE" property="daterecord" />
+    <result column="sign_in" jdbcType="TIMESTAMP" property="signIn" />
+    <result column="in_status" jdbcType="INTEGER" property="inStatus" />
+    <result column="sign_out" jdbcType="TIMESTAMP" property="signOut" />
+    <result column="out_status" jdbcType="INTEGER" property="outStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    atteno, empno, ename, dateRecord, sign_in, in_status, sign_out, out_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from attendance
+    where atteno = #{atteno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from attendance
+    where atteno = #{atteno,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="atteno" keyProperty="atteno" parameterType="com.example.software.domain.entity.Attendance" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into attendance (empno, ename, dateRecord, 
+      sign_in, in_status, sign_out, 
+      out_status)
+    values (#{empno,jdbcType=INTEGER}, #{ename,jdbcType=VARCHAR}, #{daterecord,jdbcType=DATE}, 
+      #{signIn,jdbcType=TIMESTAMP}, #{inStatus,jdbcType=INTEGER}, #{signOut,jdbcType=TIMESTAMP}, 
+      #{outStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="atteno" keyProperty="atteno" parameterType="com.example.software.domain.entity.Attendance" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into attendance
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="empno != null">
+        empno,
+      </if>
+      <if test="ename != null">
+        ename,
+      </if>
+      <if test="daterecord != null">
+        dateRecord,
+      </if>
+      <if test="signIn != null">
+        sign_in,
+      </if>
+      <if test="inStatus != null">
+        in_status,
+      </if>
+      <if test="signOut != null">
+        sign_out,
+      </if>
+      <if test="outStatus != null">
+        out_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="empno != null">
+        #{empno,jdbcType=INTEGER},
+      </if>
+      <if test="ename != null">
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="daterecord != null">
+        #{daterecord,jdbcType=DATE},
+      </if>
+      <if test="signIn != null">
+        #{signIn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inStatus != null">
+        #{inStatus,jdbcType=INTEGER},
+      </if>
+      <if test="signOut != null">
+        #{signOut,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outStatus != null">
+        #{outStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.software.domain.entity.Attendance">
+    <!--@mbg.generated-->
+    update attendance
+    <set>
+      <if test="empno != null">
+        empno = #{empno,jdbcType=INTEGER},
+      </if>
+      <if test="ename != null">
+        ename = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="daterecord != null">
+        dateRecord = #{daterecord,jdbcType=DATE},
+      </if>
+      <if test="signIn != null">
+        sign_in = #{signIn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inStatus != null">
+        in_status = #{inStatus,jdbcType=INTEGER},
+      </if>
+      <if test="signOut != null">
+        sign_out = #{signOut,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outStatus != null">
+        out_status = #{outStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where atteno = #{atteno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.software.domain.entity.Attendance">
+    <!--@mbg.generated-->
+    update attendance
+    set empno = #{empno,jdbcType=INTEGER},
+      ename = #{ename,jdbcType=VARCHAR},
+      dateRecord = #{daterecord,jdbcType=DATE},
+      sign_in = #{signIn,jdbcType=TIMESTAMP},
+      in_status = #{inStatus,jdbcType=INTEGER},
+      sign_out = #{signOut,jdbcType=TIMESTAMP},
+      out_status = #{outStatus,jdbcType=INTEGER}
+    where atteno = #{atteno,jdbcType=INTEGER}
+  </update>
+</mapper>
